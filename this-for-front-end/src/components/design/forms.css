@@ -1,0 +1,63 @@
+* {
+
+    margin: 0;
+    padding: 0;
+}
+.empty{
+   
+    
+    /* justify-content: end; */
+    display: flex;
+    flex-direction: column;
+    width:auto;
+    height: 600px;
+    align-items:center;
+    /* background-color: black; */
+    /* margin: 300px 300px 20px 10px; */
+    /* padding: 200px 0px 200px 0px; */
+    padding: 200px 0px 100px 0px;
+    background-image: url(./images/gmain.jpg);
+}
+.forms{
+    /* height:auto;
+    width: 300px;
+    display: flex;
+    flex-direction:column;
+    row-gap: 10px;
+    justify-content: center;
+    border-radius: 5px;
+    border: 3px;
+    border-color: black;
+    background-color: aqua; */
+    /* width: 200px; */
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    /* background-color: blue; */
+    align-items: center;
+    border: 3px solid red;
+    border-radius: 10px;
+    
+        backdrop-filter: blur(10px);
+        border: 3pxt solid rgba(128, 128, 128, 0.633);
+        /* display: inline-flex; */
+        /* box-shadow: 0 8px 32px 0 seagreen; */
+        /* flex-direction: column;
+        justify-content: center; */
+    
+    /* margin: 300px 300px 20px 10px; */
+    /* background-color: aqua; */
+    padding: 10px 10px 10px 10px;
+
+}
+.forms:hover{
+    box-shadow: 0 8px 32px 0 seagreen;
+    transition: all 0.6s linear;
+
+
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    /* border-color: black; */
+}
