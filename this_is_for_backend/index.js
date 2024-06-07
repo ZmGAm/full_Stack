@@ -62,6 +62,9 @@ mongoose.connect('mongodb://localhost:27017/Car_pooling', {
 app.post('/user/signup', usercontrol.adduser);
 app.post('/user/login', usercontrol.loginuser);
 app.get('/user/get', usercontrol.getuser);
+app.get('/', (re,res)=>{
+  res.json("gamer");
+});
 app.post('/pool/Pool_c', createpoolcontrol.createpool);
 
 app.listen(port, () => { 
