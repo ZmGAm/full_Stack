@@ -24,6 +24,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 40px;
+<<<<<<< HEAD
     height: 540px;
     width: 700px;
     overflow: scroll;
@@ -39,11 +40,29 @@
     flex-direction: row;
     /* row-gap: 100px; */
     height: 590px;
+=======
+    /* height: 540px; */
+    /* width: 700px; */
+    overflow: scroll;
+    /* position: absolute; */
+    /* left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; */
+    /* margin: 20px 40px 20px 10px; */
+}
+.upper{
+    display: flex;
+    /* flex-direction: row; */
+    /* row-gap: 100px; */
+    /* height: 590px; */
+>>>>>>> ec4ba55 (first commit)
 }
 .div-for-cars1{
     display: flex;
     flex-direction: column;
     /* row-gap: 40px; */
+<<<<<<< HEAD
     /* height: 570px; */
     /* width: 700px; */
     /* overflow: scroll; */
@@ -53,6 +72,18 @@
     top: 0;
     bottom: 0;
     margin: 10px 40px 0px 10px;
+=======
+    height: 570px;
+    /* width: 700px; */
+    /* overflow: scroll; */
+    /* position: absolute; */
+    /* left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0; */
+    margin: 10px 40px 0px 10px;
+    column-gap: 10px;border: 3px solid blue;
+>>>>>>> ec4ba55 (first commit)
 }
 /*--------------------slider css_____________________>*/
 .main {
@@ -220,7 +251,11 @@ p1 {
 
     display: inline-flex;
     flex-direction: column;
+<<<<<<< HEAD
     column-gap: 10px;
+=======
+    
+>>>>>>> ec4ba55 (first commit)
 
 }
 

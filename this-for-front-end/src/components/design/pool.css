@@ -5,6 +5,52 @@
 }
 .pool-data{
     
+<<<<<<< HEAD
 border: 5px cornflowerblue ridge;
 background-color: black;
 }
+=======
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+}
+h30{
+    color: black;
+    font-size: 20px;
+    border-bottom:5px double black;
+}
+.profile{
+   
+    box-shadow: 0 8px 25px 0 black;
+    display: flex;  
+    flex-direction: column;
+    margin: 10%;
+    justify-self: center;
+    width: 20%;
+
+}
+.profile:hover{
+
+    transform:scale(1.1);
+    box-shadow: 0 16px 45px seagreen;
+}
+.Edit {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: black;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  .topcontain{
+
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+  }
+>>>>>>> ec4ba55 (first commit)

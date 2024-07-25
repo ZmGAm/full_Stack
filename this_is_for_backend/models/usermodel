@@ -8,6 +8,7 @@ const usermodel = mongoose.model('user', {
     password: String,
     dateofbirth: String,
     type:String,
+<<<<<<< HEAD
     id: String,
     date: String,
 });
@@ -17,6 +18,12 @@ const usermodel = mongoose.model('user', {
 //     phone: String,
 //     password: String
 // });
+=======
+    ID: String,
+    date: String,
+});
+
+>>>>>>> ec4ba55 (first commit)
 module.exports = usermodel
 usermodel.create({
     username : 'DMIN',
@@ -25,6 +32,10 @@ usermodel.create({
     phone: '0307145600',
     dateofbirth:'0001-03-04',
     type:'unknown',
+<<<<<<< HEAD
     id:'unknown',
+=======
+    ID:'unknown',
+>>>>>>> ec4ba55 (first commit)
     date: new Date(),
 })

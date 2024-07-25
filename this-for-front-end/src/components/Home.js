@@ -2,6 +2,10 @@ import React, { useState,useEffect, useContext } from 'react';
 // import  Maps  from "./Maps";
 import  Locationsearch  from "./Locationsearch";
 
+<<<<<<< HEAD
+=======
+import Pool_Read from './Pool_Read';
+>>>>>>> ec4ba55 (first commit)
 import './design/home.css';
 // import ContextProvider from './Context/ContextProvider';
 // import img1 from './design/images/HD-wallpaper-suzuki-swift-2017-glx-turbo-new-red-swift-h_002.jpg'
@@ -70,7 +74,11 @@ const Home = () => {
         setBottomWidth(bottomwidth);
       
     }
+<<<<<<< HEAD
     // console.log("source",destination)
+=======
+    
+>>>>>>> ec4ba55 (first commit)
 
     useEffect(() => {
       // setPlaceholder(type === 'Source' ? 'Pickup Location ' : 'Dropoff Location ');
@@ -349,7 +357,11 @@ const Home = () => {
                                               </div>
                                               
      
+<<<<<<< HEAD
                                                   <div className='maps'style={{width:'100vw',height:'400px'}}  >
+=======
+                                                  <div style={{width:'100vw',height:'400px'}}  >
+>>>>>>> ec4ba55 (first commit)
                                                     
                                                      
                                                           <GoogleMapNew/>
@@ -359,8 +371,16 @@ const Home = () => {
                                                 </div>
                                                
                 </div>
+<<<<<<< HEAD
 
    </div>
+=======
+                <div >
+                  {/* <Pool_Read/> */}
+                </div>
+   </div>
+   
+>>>>>>> ec4ba55 (first commit)
    {/* </ContextProvider> */}
   </>
 }
