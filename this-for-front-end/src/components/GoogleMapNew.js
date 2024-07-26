@@ -28,16 +28,16 @@ function GoogleMapNew() {
     lat: -3.745,
     lng: -38.523,
   });
-<<<<<<< HEAD
+
   // const { isLoaded } = useLoadScript({
   //     // id: 'google-map-script',
   //     // googleMapsApiKey: "AIzaSyAoJwUr3rjwlC4FgP7eDnU6OpvQkzmCj-8",
   //     googleMapsApiKey : process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_API_KEY
   //     // libraries: ['places']
   //   })
-=======
 
->>>>>>> ec4ba55 (first commit)
+
+
 
   const [map, setMap] = React.useState(null);
   const [directionpoint, setDirectionpoint] = React.useState({});
@@ -78,7 +78,7 @@ function GoogleMapNew() {
     }
   }, [destination]);
  
-<<<<<<< HEAD
+
   // const directionRoute=()=>{
 
   //   const DirectionsService=new window.google.maps.DirectionsService();
@@ -122,8 +122,7 @@ function GoogleMapNew() {
   //   );
     
   // };
-=======
->>>>>>> ec4ba55 (first commit)
+
 
   const directionRoute = () => {
     const DirectionsService = new window.google.maps.DirectionsService();

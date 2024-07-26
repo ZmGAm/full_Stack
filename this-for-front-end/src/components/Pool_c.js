@@ -1,22 +1,5 @@
 "use Client"
 import React from 'react';
-<<<<<<< HEAD
-import { useState ,useEffect } from 'react';
-import { Source } from 'react-map-gl';
-// import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import './design/signup.css';
-import  Locationsearch  from "./Locationsearch";
-
-// import Axios  from 'axios';
-// import { imageDb } from './config';
-const Pool_c = () => {
-
-  const preset_key="cars-pics";
-  const [error,setError]=useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
-  const id = Math.random().toString(36).substring(2);
-=======
 import { useState ,useEffect,useContext } from 'react';
 import  Locationsearch  from "./Locationsearch";
 import { PoolContext } from './Context/PoolContext';
@@ -24,6 +7,16 @@ import { LoginContext } from './Context/LoginContext';
 import { SearchContext } from './Context/SearchContext';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import GoogleMapNew from './GoogleMapNew';
+import { Source } from 'react-map-gl';
+// import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import './design/signup.css';
+// import  Locationsearch  from "./Locationsearch";
+
+// import Axios  from 'axios';
+// import { imageDb } from './config';
+
+
 const Pool_c = () => {
   const posts_data="http://localhost:5000/pool/Pool_c";
   
@@ -35,31 +28,27 @@ const Pool_c = () => {
   // const ID = Math.random().toString(36).substring(2);
   const[searchsource,setSearchSource]=useState(null );
   const[searchdestination,setSearchDestination]=useState(null );
->>>>>>> ec4ba55 (first commit)
+
   // const [image, setImage] = useState();
   // const [filen, setFilen] = useState();
   const [exit, setExit] = useState('');
     const [userRegistration,setUserRegistration]=useState({
-<<<<<<< HEAD
+
         destination:"",
         source:"",
-=======
+
         destination:{},
         source:{},
->>>>>>> ec4ba55 (first commit)
         Name:"",
         seats:"",
         transmission:"",
         rent:"",
         time:"",
-<<<<<<< HEAD
         id:"",
         date:""
      
     });
  
-    const posts_data="http://localhost:5000/pool/Pool_c";
-
     const inputvalid= (e)=>{
         const name=e.target.name;
         const value=e.target.value;
@@ -69,43 +58,6 @@ const Pool_c = () => {
         // setUserRegistration({...userRegistration,[name]:value});
         if (userRegistration) {
           setUserRegistration({ ...userRegistration, [name]: value });
-=======
-        ID:"",
-        date:""
-     
-    });
-
-   
-// useEffect(()=>{
-
-// console.log("SEARCH IN POOL",search)
-
-// })
-    useEffect(()=>{
-    //  setDestin(pool.destination)
-    console.log("pool in pc",pool);
-    // console.log("destination in pc",userRegistration.destination);
-    // console.log("source in pc",userRegistration.source);
-    console.log("user registration",userRegistration);
-    },[pool]);
-    // useEffect(()=>{
-    //   setSource(pool.source)
-    //   setDestin(pool.destination)
-    // console.log("destin",destin,"source",source);
-    // },[pool]);
-    const inputvalid= (e)=>{
-      const name=e.target.name;
-      const value=e.target.value;
-      // const file=e.target.files[0];
-      // console.log(name,value);
-      
-      // setUserRegistration({...userRegistration,[name]:value});
-      if (userRegistration) {
-        
-       
-          // setUserRegistration({ ...userRegistration,destination:pool.destination,source:pool.source, [name]: value });
-          setUserRegistration({ ...userRegistration,[name]: value });
->>>>>>> ec4ba55 (first commit)
           // setFilen(file);
         } else {
           console.error("userRegistration is null"); // Handle the case where userRegistration is not yet initialized
@@ -113,9 +65,9 @@ const Pool_c = () => {
       
     }
 
-<<<<<<< HEAD
+
        
-=======
+
    
     useEffect(() => {
       console.log("search source value in develop" ,searchsource);
@@ -163,7 +115,7 @@ const Pool_c = () => {
       });
     }
   };
->>>>>>> ec4ba55 (first commit)
+
       const submmit = async (e) => {
         e.preventDefault();
         
@@ -174,11 +126,10 @@ const Pool_c = () => {
       };
       const insertdata= async (e)=>{
         
-<<<<<<< HEAD
-        const newRecord = { ...userRegistration, date: new Date().toLocaleString(),id:id };
-=======
+
         const newRecord = { ...userRegistration, date: new Date().toLocaleString(),ID:login.ID };
->>>>>>> ec4ba55 (first commit)
+
+
         try {
           // Make an API request to post form data
           // const response = await Axios.post(posts_data, newRecord);
@@ -218,21 +169,21 @@ const Pool_c = () => {
           const errors = {};
           const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
           const no = /^[+]*[(]{0,1}[0-9]{1,3}[)]{0,1}[-\s\./0-9]*$/g;
-<<<<<<< HEAD
+
           if (!values.destination) {
             errors.destination = "destination is required!";
           }
           if (!values.source) {
             errors.source = "source is required!";
           } 
-=======
+
           if (!searchsource) {
             errors.source = "source is required!";
           }
           if (!searchdestination) {
             errors.destination = "destination is required!";
           }
->>>>>>> ec4ba55 (first commit)
+
           if (!values.rent) {
             errors.rent = "rent is required!";
           }
@@ -268,12 +219,6 @@ const Pool_c = () => {
                 <div className="form-group">
                         <label htmlFor="source" className="form-label">destination</label>
                        <div className='desti'>
-<<<<<<< HEAD
-
-                        <Locationsearch type='destination'/>
-                       </div>
-                        <p1 className="formerrors">{error.destination}</p1>
-=======
                        <GooglePlacesAutocomplete
                           selectProps={
                               {
@@ -288,21 +233,12 @@ const Pool_c = () => {
                           }
                         }
                           />  
+                          </div>
                         <p1 className="formerrors">{error.destination}</p1>
                        </div>
->>>>>>> ec4ba55 (first commit)
-                                                    
-
-                </div>
                 <div className="form-group">
                         <label htmlFor="source" className="form-label">source</label>
-<<<<<<< HEAD
-                        <input type="text"  value={userRegistration.source}
-                        onChange={inputvalid}
-                        autoComplete='off'name="source" id="source" />
-                        <p1 className="formerrors">{error.source}</p1>
-                        <Locationsearch type='Source'/>
-=======
+
                        <div className='desti'>
                        <GooglePlacesAutocomplete
                             selectProps={
@@ -325,7 +261,7 @@ const Pool_c = () => {
                        </div>
                                                     
 
->>>>>>> ec4ba55 (first commit)
+
                 </div>
                 <div className="form-group">
                         <label htmlFor="Name" className="form-label">Name</label>
@@ -379,17 +315,11 @@ const Pool_c = () => {
                          autoComplete='off'name="image" id="image" />
                         <p1 className="formerrors">{error.Image}</p1>
                 </div> */}
-<<<<<<< HEAD
+
               <p>user {exit.message}</p>
                 <button class="btn btn-primary" >submmit</button>
             </form>
-            </div> 
-            <div>
-=======
-              <p> {exit.message}</p>
-                <button class="btn btn-primary" >submmit</button>
-            </form>
-            </div>
+           
             <div
              style={{display:'flex',margin:"0"}} 
               >
@@ -402,7 +332,6 @@ const Pool_c = () => {
                                                 </div> 
             <div className='map'> 
              
->>>>>>> ec4ba55 (first commit)
                 {
                     
                     // data.map((curElem)=>{
@@ -420,8 +349,8 @@ const Pool_c = () => {
                 }
             </div>
 
+    </div>
    </div>
-  
 </>
       
 };

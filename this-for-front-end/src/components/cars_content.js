@@ -95,9 +95,6 @@ const cars_content = [
         price:"6500"
 
       },
-<<<<<<< HEAD
-
-=======
       {
         Id: 5,
         carimag:"/images/gmain.jpg",
@@ -144,7 +141,6 @@ const cars_content = [
         price:"6500"
 
       },
->>>>>>> ec4ba55 (first commit)
      
 ];
   
