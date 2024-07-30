@@ -8,16 +8,18 @@ import { SearchContext } from './Context/SearchContext';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import GoogleMapNew from './GoogleMapNew';
 import { Source } from 'react-map-gl';
+import { useNavigate } from 'react-router-dom';
 // import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import './design/signup.css';
 // import  Locationsearch  from "./Locationsearch";
-
+import"./design/forms.css"
 // import Axios  from 'axios';
 // import { imageDb } from './config';
 
 
 const Pool_c = () => {
+  const direct=useNavigate();
   const posts_data="http://localhost:5000/pool/Pool_c";
   
   const [error,setError]=useState({});
@@ -67,8 +69,7 @@ const Pool_c = () => {
 
 
        
-
-   
+    
     useEffect(() => {
       console.log("search source value in develop" ,searchsource);
       // console.log("search destination value in develop" ,searchdestination);
@@ -211,33 +212,12 @@ const Pool_c = () => {
         // style={{  width: "500px",
         // margin: "auto",marginTop:"100px"}}
     return <> 
-    <div className="Container" 
-  style={{  display:"flex",alignItems: "center",justifyContent:"center", width: "100hv",
-  height: "900PX"}} >
-    <div className="farm"> 
-        <form className="form"action="" onSubmit={submmit}  > 
-                <div className="form-group">
-                        <label htmlFor="source" className="form-label">destination</label>
-                       <div className='desti'>
-                       <GooglePlacesAutocomplete
-                          selectProps={
-                              {
-                              value:searchdestination,
-                              onChange:
-                              (place) => {
-                                // if(place){
-                                  GetCoordinate(place,"destination");
-                                  setSearchDestination(place);
-                              
-                              }
-                          }
-                        }
-                          />  
-                          </div>
-                        <p1 className="formerrors">{error.destination}</p1>
-                       </div>
-                <div className="form-group">
-                        <label htmlFor="source" className="form-label">source</label>
+    <div className="Container" >
+    
+    <form className="form"action="" onSubmit={submmit} style={{width:"30%",border:"3px solid blue"}} > 
+    <div className='text' style={{textDecoration:"underline overline"}}>Create Pool</div>
+    <div className="form-group">
+                        <label htmlFor="source" className="form-label">Source</label>
 
                        <div className='desti'>
                        <GooglePlacesAutocomplete
@@ -249,8 +229,8 @@ const Pool_c = () => {
                                   GetCoordinate(place,"source");
                                   setSearchSource(place);
                               
-                              }
-                              
+                              },
+                               placeholder:"Pick up location "
                               }
                             }
                             
@@ -264,29 +244,51 @@ const Pool_c = () => {
 
                 </div>
                 <div className="form-group">
+                        <label htmlFor="source" className="form-label">Destination</label>
+                       <div className='desti'>
+                       <GooglePlacesAutocomplete
+                          selectProps={
+                              {
+                              value:searchdestination,
+                              onChange:
+                              (place) => {
+                                // if(place){
+                                  GetCoordinate(place,"destination");
+                                  setSearchDestination(place);
+                              
+                              },
+                               placeholder:"Drop off location "
+                          }
+                        }
+                          />  
+                          </div>
+                        <p1 className="formerrors">{error.destination}</p1>
+                </div>
+                
+                <div className="form-group">
                         <label htmlFor="Name" className="form-label">Name</label>
                         <input type="text"  value={userRegistration.Name}
                         onChange={inputvalid}
-                        autoComplete='off'name="Name" id="Name" />
+                        autoComplete='off'name="Name" id="Name" placeholder='      enter your name'/>
                         <p1 className="formerrors">{error.Name}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="Model" className="form-label">Model</label>
                         <input type="text" value={userRegistration.Model}
                         onChange={inputvalid}
-                         autoComplete='off'name="Model" id="Model" />
+                         autoComplete='off'name="Model" id="Model"  placeholder='      enter vehicle model'/>
                         <p1 className="formerrors">{error.Model}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="seats" className="form-label">No of seats </label>
                         <input type="number" value={userRegistration.seats}
                         onChange={inputvalid}
-                         autoComplete='off'name="seats" id="seats" />
+                         autoComplete='off'name="seats" id="seats" placeholder='      enter no of seats'/>
                         <p1 className="formerrors">{error.seats}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="transmission" className="form-label">transmission</label>
-                        <select name="transmission" value={userRegistration.transmission} onChange={inputvalid}>
+                        <select name="transmission" value={userRegistration.transmission} onChange={inputvalid} style={{padding:"3px 35px 3px 35px"}}>
                           <option>Please Select</option>
                           <option>auto</option>
                           <option>Maunal</option>
@@ -295,28 +297,22 @@ const Pool_c = () => {
                         <p1 className="formerrors">{error.transmission}</p1>
                 </div>
                 <div className="form-group">
-                        <label htmlFor="rent" className="form-label">rent </label>
+                        <label htmlFor="rent" className="form-label">Rent </label>
                         <input type="number" value={userRegistration.rent}
                         onChange={inputvalid}
-                         autoComplete='off'name="rent" id="rent" />
+                         autoComplete='off'name="rent" id="rent" placeholder='      enter requested rent'/>
                         <p1 className="formerrors">{error.rent}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="time" className="form-label">Time </label>
                         <input type="text" value={userRegistration.time}
                         onChange={inputvalid}
-                         autoComplete='off'name="time" id="time" />
+                         autoComplete='off'name="time" id="time" placeholder='      enter departure time'/>
                         <p1 className="formerrors">{error.time}</p1>
                 </div>
-                {/* <div>
-                        <label htmlFor="file">image</label>
-                        <input type="file" value={userRegistration.Image}
-                        onChange={inputvalid}
-                         autoComplete='off'name="image" id="image" />
-                        <p1 className="formerrors">{error.Image}</p1>
-                </div> */}
+               
 
-              <p>user {exit.message}</p>
+              <p>{exit.message}</p>
                 <button class="btn btn-primary" >submmit</button>
             </form>
            
@@ -330,27 +326,17 @@ const Pool_c = () => {
                                                         
 
                                                 </div> 
-            <div className='map'> 
-             
-                {
-                    
-                    // data.map((curElem)=>{
-                    //     const {id,username,email,phone,password}=curElem;
-                    //     return( 
-                            
-                    //         <div>
-                    //             <p>{username}</p>
-                    //             <p>{email}</p>
-                    //             <p>{phone}</p>
-                    //             <p>{password}</p>
-                    //         </div>
-                    //     )
-                    // })
-                }
-            </div>
+            
+            <div className='google'> 
+                                                          
+                   <GoogleMapNew/>                                       
+
+               </div> 
 
     </div>
-   </div>
+
+    
+ 
 </>
       
 };

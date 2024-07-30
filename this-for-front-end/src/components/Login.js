@@ -6,7 +6,7 @@ import { LoginContext } from './Context/LoginContext';
 // import{TypeContext}from "./Context/TypeContext";
 import "./design/signup.css"
 const Login = () => {
-  // const navigate = useNavigate();
+  const direct = useNavigate();
   const preset_key="cars-pics";
   const [errorforform,setErrorforfrom]=useState({});
   
@@ -17,7 +17,7 @@ const Login = () => {
   // const [cdata, setCdata] = useState(null);
   const [cdata, setCdata] = useState('');
     const [userRegistration,setUserRegistration]=useState({
-        username:"",
+        email:"",
         password:"",
     });
 
@@ -173,6 +173,22 @@ const Login = () => {
           // Handle error (e.g., show an error message)
         }
       }
+      useEffect(()=>{
+        if(cdata.code===1000){
+          if(cdata.type==="Owner"||cdata.type==="Driver"){
+            setTimeout(()=>{
+  
+              direct("/Pool_c")
+            },2000)
+          }
+          if(cdata.type==="Passenger"){
+            setTimeout(()=>{
+  
+              direct("/")
+            },2000)
+          }
+        }
+      },[cdata])
       // console.log("token in login ",token);
       useEffect(()=>{
         localStorage.setItem('login',JSON.stringify(login));
@@ -188,8 +204,11 @@ const Login = () => {
       },[errorforform]);
       const validate = (values) => {
           const errors = {};
-          if (!values.username) {
-            errors.username = "Username is required!";
+          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+          if (!values.email) {
+            errors.email = "Email is required!";
+          } else if (!regex.test(values.email)) {
+            errors.email = "This is not a valid email format!";
           }
           
           if (!values.password) {
@@ -208,18 +227,19 @@ const Login = () => {
   height: "900PX"}}>
             <div className='farm'>
                           <form  className="form" action="" onSubmit={submmit} > 
+                          <div className='text' style={{textDecoration:"underline overline"}}>Login</div>
                               <div className="form-group">
-                                      <label htmlFor="username">Fullname</label>
-                                      <input type="username" value={userRegistration.username}
-                                      onChange={inputvalid}
-                                      autoComplete='off' name="username" id="username" />
-                                      <p1 className="formerrors">{errorforform.username}</p1>
+                                  <label htmlFor="email" className="form-label">Email</label>
+                                  <input type="email"  value={userRegistration.email}
+                                  onChange={inputvalid}
+                                  autoComplete='off'name="email" id="email" placeholder='      enter your email' />
+                                  <p1 className="formerrors">{errorforform.email}</p1>
                               </div>
                               <div className="form-group">
                                       <label htmlFor="password" class="form-label" >Password</label>
                                       <input type="password" value={userRegistration.password}
                                       onChange={inputvalid}
-                                      autoComplete='off'name="password" id="password" />
+                                      autoComplete='off'name="password" id="password" placeholder='      enter your password'/>
                                       <p1 className="formerrors">{errorforform.password}</p1>
                               </div>
                               
@@ -228,26 +248,6 @@ const Login = () => {
                               <p>{cdata.message}</p>
                           </form>
                           
-                          <div>
-                              {
-                                  
-                                  // data.map((curElem)=>{
-                                  //     const {id,username,email,phone,password}=curElem;
-                                  //     return( 
-                                          
-                                  //         <div>
-                                  //             <p>{username}</p>
-                                  //             <p>{email}</p>
-                                  //             <p>{phone}</p>
-                                  //             <p>{password}</p>
-                                  //         </div>
-                                  //     )
-                                  // })
-                              }
-                              {/* <p>user {cdata.message}</p> */}
-                              {/* <p>token {token}</p> */}
-                              {/* <p>type {cdata.type}</p> */}
-                          </div>
                     </div>
 
             </div>

@@ -14,6 +14,14 @@
     border: 1px solid white;
     list-style-type: none;
 }
+.logo:hover{
+    box-shadow: 0 8px 32px 0 seagreen;
+    transition: all 0.6s linear; 
+    color: black;
+    font-family:sans-serif;
+    font-weight: 600;
+
+}
 
 /* header {
 
@@ -95,7 +103,13 @@ ul li link head{
     padding: 5% 10px;
 }
 .linkitems:hover{
+
     
     color: rgb(19, 102, 144);
+
+    transform:scale(1.5);
+    color: rgb(19, 102, 144);
+    border-bottom: 1px solid rgb(19, 102, 144) ;
+
     
 }

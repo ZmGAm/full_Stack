@@ -48,3 +48,21 @@ h30{
     justify-content: center;
   }
 
+  .text {
+    /* background: #ff7777; */
+    color: black;
+    font-family: sans-serif;
+    font-size: 2.5rem;
+    /* padding: 25px 160px; */
+    /* position: absolute; */
+    display: flex;
+    margin: 3%;
+    /* align-items: center; */
+    justify-content: center;
+    /* justify-self: center; */
+}
+.text:hover{
+
+    transform:scale(1.1);
+    text-shadow: 0 16px 45px gray;
+}

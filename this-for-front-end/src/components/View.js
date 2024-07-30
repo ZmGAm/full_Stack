@@ -71,31 +71,34 @@ const View = () => {
     
        Object.values(currentdata).map((item)=>{
             const{ID,username,password,phone,email}=item;
-            return(<>
-                  <div className='topcontain'>
+            if(ID){
+              return(<>
+                <div className='topcontain'>
 
-                        <div className='profile'>
-                            <img src={picprofile} alt="loading" style={{width:"100%"}}/>
-                                    <div className="pool-data" style={{color:"black"}}>
+                      <div className='profile'>
+                          <img src={picprofile} alt="loading" style={{width:"100%"}}/>
+                                  <div className="pool-data" style={{color:"black"}}>
 
-                                        <h30>ID: {ID}</h30>
-                                        <h30>User Name: {username}</h30>
-                                        <h30>Email: {email}</h30>
-                                        <h30>Pass word: {password}</h30>
-                                        <h30>Contact: {phone}</h30>
-                                
-                                    </div>
-                                    
-                                    <button className='Edit' > Edit</button>
-                                    
-                                    
-                            </div>
-                             
-                  </div>
-                            <p> {currentdata.message}</p>
-              
-            </>
-            )
+                                      <h30>ID: {ID}</h30>
+                                      <h30>User Name: {username}</h30>
+                                      <h30>Email: {email}</h30>
+                                      <h30>Pass word: {password}</h30>
+                                      <h30>Contact: {phone}</h30>
+                              
+                                  </div>
+                                  
+                                  <button className='Edit' > Edit</button>
+                                  
+                                  
+                          </div>
+                           
+                </div>
+                          <p> {currentdata.message}</p>
+            
+          </>
+          )
+            }
+           
         })
     
   

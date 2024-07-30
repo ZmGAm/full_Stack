@@ -4,12 +4,13 @@ import { useState ,useEffect } from 'react';
 // import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import './design/signup.css';
+import { useNavigate } from 'react-router-dom';
 
 
 // import Axios  from 'axios';
 // import { imageDb } from './config';
 const Signup = () => {
-
+const direct=useNavigate()
   const preset_key="cars-pics";
   const [error,setError]=useState({});
   const [isSubmit, setIsSubmit] = useState(false);
@@ -30,7 +31,15 @@ const Signup = () => {
     });
     const posts_data="http://localhost:5000/user/signup";
     const posts_pic="https://api.cloudinary.com/v1_1//dogabixdo/image/upload";
-    
+    useEffect(()=>{
+      if(exit.code===26000){
+       setTimeout(()=>{
+
+         direct("/Login")
+       },2000)
+      }
+     },[exit])
+   
     const inputvalid= (e)=>{
         const name=e.target.name;
         const value=e.target.value;
@@ -46,67 +55,7 @@ const Signup = () => {
         // setImage({...image,[name]:value});
         //  setFilen(file);
     }
-    // const submmit =(e)=>{
-    //     e.preventDefault();
-    //     const newRecord={...userRegistration,id: new Date().getTime().toString()};
-    //     // const picture={...image,id: new Date().getTime().toString()};
-       
-    //     // console.log(records);
-    //     // setRecords({...records,newRecord});
-    //     setError(validate(userRegistration))
-        
-    //     setIsSubmit(true);
-    //     console.log(newRecord);
-        
-    //     // console.log(picture);
-        
-        
-    //     // setUserRegistration({username:"",email:"",phone:"",password:""});
-    //     // const dataArray = records.data || [];
-    //     // const formData =new FormData();
-    //     // formData.append('file',filen);
-    //     // formData.append('upload_preset',preset_key);
-    //     // Axios.post("https://car-pooling-761a7-default-rtdb.firebaseio.com/car-poolingfrom.json",newRecord)
-    //     // .then(res=>setImage(res.data.secure_url))
-    //     // .then(res=>console.log(res.data))
-    //     // .catch(err=>console.log(err))
-    //     try {
-    //       // Make an API request to post form data
-    //       const response =  Axios.post(posts_data,  newRecord);
-          
-    //       if (response.status === 201) {
-    //         console.log('Data submitted successfully:', response.data);
-    //         // Handle success (e.g., show a success message)
-    //       } else {
-    //         console.error('API request failed:', response.status);
-    //         // Handle error (e.g., show an error message)
-    //       }
-    //     } catch (error) {
-    //       console.error('Error during API request:', error);
-    //       // Handle error (e.g., show an error message)
-    //     }
-    //   };
-      
-      // const postimage=async(picture)=>{
-      //     const tasveer =new FormData();
-      //     tasveer.append("file",image);
-      //     tasveer.append("upload_preset","cars-pics");
-      //     // tasveer.append("cloud_name","dogabixdo");
-      //     const result =await Axios.post("https://api.cloudinary.com/v1_1//dogabixdo/image/upload",tasveer)
-      //     .then(res=>console.log(res))
-      //     .catch(err=>console.log(err));
-      //     // console.log("use tasveer" ,result.tasveer);
-      //     // console.log("use tasveer" ,result.tasveer);
-        
-      //     // setData(result.ima);
-
-
-      //   }
-      //   useEffect(()=>{
-        
-      //     postimage();
-
-      //   },[]);
+   
        
       const submmit = async (e) => {
         e.preventDefault();
@@ -195,79 +144,59 @@ const Signup = () => {
   height: "900PX"}} >
     <div className="farm"> 
         <form className="form"action="" onSubmit={submmit}  > 
+        <div className='text' style={{textDecoration:"underline overline"}}>Signup</div>
                 <div className="form-group">
                         <label htmlFor="username" className="form-label">Fullname</label>
                         <input type="username" value={userRegistration.username}
                         onChange={inputvalid}
-                        autoComplete='off' name="username" id="username" />
+                        autoComplete='off' name="username" id="username" placeholder='      enter your name'/>
                         <p1 className="formerrors">{error.username}</p1>
                 </div>
                 <div className="form-group">
-                        <label htmlFor="email" className="form-label">email</label>
+                        <label htmlFor="email" className="form-label">Email</label>
                         <input type="email"  value={userRegistration.email}
                         onChange={inputvalid}
-                        autoComplete='off'name="email" id="email" />
+                        autoComplete='off'name="email" id="email" placeholder='      enter your email'/>
                         <p1 className="formerrors">{error.email}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="phone" className="form-label">Phone</label>
                         <input type="phone"  value={userRegistration.phone}
                         onChange={inputvalid}
-                        autoComplete='off'name="phone" id="phone" />
+                        autoComplete='off'name="phone" id="phone" placeholder='      enter your phone'/>
                         <p1 className="formerrors">{error.phone}</p1>
                 </div>
                 <div className="form-group">
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" value={userRegistration.password}
                         onChange={inputvalid}
-                         autoComplete='off'name="password" id="password" />
+                         autoComplete='off'name="password" id="password" placeholder='      enter your password'/>
                         <p1 className="formerrors">{error.password}</p1>
                 </div>
                 <div className="form-group">
-                        <label htmlFor="dateofbirth" className="form-label">dateofbirth</label>
+                        <label htmlFor="dateofbirth" className="form-label">Date of birth</label>
                         <input type="date" value={userRegistration.dateofbirth}
+                        style={{padding:"1px 20px 1px 20px"}}
                         onChange={inputvalid}
-                         autoComplete='off'name="dateofbirth" id="dateofbirth" />
+                         autoComplete='off'name="dateofbirth" id="dateofbirth"/>
                         <p1 className="formerrors">{error.dateofbirth}</p1>
                 </div>
                 <div className="form-group">
-                        <label htmlFor="type" className="form-label">type</label>
-                        <select name="type" value={userRegistration.type} onChange={inputvalid}>
-                          <option>Please Select</option>
+                        <label htmlFor="type" className="form-label">Type</label>
+                        <select name="type" value={userRegistration.type} onChange={inputvalid}  style={{padding:"3px 35px 3px 35px"}}>
+                          <option> Select Type</option>
                           <option>Driver</option>
                           <option>Passenger</option>
                           <option>Owner</option>
                         </select>
                         <p1 className="formerrors">{error.type}</p1>
                 </div>
-                {/* <div>
-                        <label htmlFor="file">image</label>
-                        <input type="file" value={userRegistration.Image}
-                        onChange={inputvalid}
-                         autoComplete='off'name="image" id="image" />
-                        <p1 className="formerrors">{error.Image}</p1>
-                </div> */}
-              <p>user {exit.message}</p>
+                
+              <p>{exit.message}</p>
                 <button class="btn btn-primary" >submmit</button>
             </form>
             </div> 
-            <div>
-                {
-                    
-                    // data.map((curElem)=>{
-                    //     const {id,username,email,phone,password}=curElem;
-                    //     return( 
-                            
-                    //         <div>
-                    //             <p>{username}</p>
-                    //             <p>{email}</p>
-                    //             <p>{phone}</p>
-                    //             <p>{password}</p>
-                    //         </div>
-                    //     )
-                    // })
-                }
-            </div>
+            
 
    </div>
   

@@ -61,3 +61,31 @@
     flex-direction: column;
     /* border-color: black; */
 }
+.Container{
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    column-gap: 1%;
+    
+   
+}
+
+.google{
+    display: flex;
+    /* flex-direction: row; */
+    /* width: 100%; */
+   width: 100vw;
+   height: 100%;
+   border: 3px solid blue;
+}
+
+@media (max-width: 800px) {
+    .Container {
+      flex-direction: column;
+      padding: 1%;
+      row-gap: 1%;
+      height:80%;
+      width:80%;
+    }
+  }
+

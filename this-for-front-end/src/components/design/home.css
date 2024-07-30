@@ -36,15 +36,33 @@
 }
 .upper{
     display: flex;
+
     /* flex-direction: row; */
     /* row-gap: 100px; */
     /* height: 590px; */
+
+
+    flex-direction: row;
+    padding: 1%;
+    column-gap: 1%;
+    /* height: 590px; */
 }
-.div-for-cars1{
+@media (max-width: 800px) {
+    .upper {
+      flex-direction: column;
+      padding: 1%;
+      row-gap: 1%;
+    }
+  }
+  .div-for-cars1{
     display: flex;
     flex-direction: column;
     /* row-gap: 40px; */
+
     height: 570px;
+
+    height: 80vh;
+
     /* width: 700px; */
     /* overflow: scroll; */
     /* position: absolute; */
@@ -52,8 +70,14 @@
     right: 0;
     top: 0;
     bottom: 0; */
+
     margin: 10px 40px 0px 10px;
     column-gap: 10px;border: 3px solid blue;
+
+    /* margin: 10px 40px 0px 10px; */
+    column-gap: 1%;
+    border: 3px solid blue;
+
 }
 /*--------------------slider css_____________________>*/
 .main {

@@ -10,25 +10,28 @@ module.exports.getpool = async (req, res) => {
 }
 module.exports.viewpool = async (req, res) => {
  console.log("bcakned recived object",req.body)
-    const { source } = req.body
-    const location = await createpoolmodel.findOne({source:source})
-
-    
+ const  {source,destination}  = req.body
+ const location = await createpoolmodel.findOne({source:source})
     if (location) {
-        if (location.destination.adress === destination.adress&&location.source.adress===source.adress) {
-            return res.send({ code: 400, message: ' match success fully ', location:location})
-        }
+        // return res.send({ code: 400, message: ' match success fully ', location:{source:location.source,destination:location.destination}})
+        // /if (location.destination.adress === destination.adress&&location.source.adress===source.adress){
+         const destinationmatch= await createpoolmodel.findOne({destination:destination})
+        if (destinationmatch) {
+            return res.send({ code: 3000, message: ' available pools ', Location:{Name:location.Name,Model:location.Model,Seats:location.seats,transmission:location.transmission,Rent:location.rent,Time:location.time,Date:location.date,destination:location.destination.adress,source:location.source.adress,destinationname:location.destination.name,sourcename:location.source.name}})
+        } 
         else{
 
-            return res.send({ code: 300, message: 'you cannot create more pool just add new vehical details' })
+            return res.send({ code: 300, message: 'pool is exit but dstination not same' })
         }
+    }
         
-        
-    } else {
+    else {
        
         
-            return res.send({ code: 300, message: 'location not match' })
+            return res.send({ code: 300, message: 'pools are not available' })
+
         
        
     }
+    
 }

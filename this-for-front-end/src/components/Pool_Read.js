@@ -2,9 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { DestinationContext } from './Context/DestinationContext';
 import { SourceContext } from './Context/SourceContext';
 const Pool_Read = () => {
+  
   const[currentdata,setCurrentData]=useState({});
-const{destination}=useContext(DestinationContext);
-const{source}=useContext(SourceContext);
+  const[Rent,setRent]=useState({});
+  const[oldRent,setOldRent]=useState({});
+  const[selected,setSlected]=useState(1);
+  const[Seats,setSeats]=useState({});
+ const{destination}=useContext(DestinationContext);
+ const{source}=useContext(SourceContext);
 useEffect(()=>{
   console.log("view pool destination",destination);
  
@@ -22,7 +27,7 @@ const getdata="http://localhost:5000/pool/Pool_Read";
       try{
       const response = await fetch(getdata,{
         method:'POST',
-        body:JSON.stringify(source),
+        body:JSON.stringify({source,destination}),
         headers:{
           'Content-Type':'application/json'
         }
@@ -35,6 +40,14 @@ const getdata="http://localhost:5000/pool/Pool_Read";
         console.log("data in pool_read",data);
         console.log("current pool_read",currentdata);
         console.log(" data.data pool_read",data.data);
+        localStorage.setItem("data",JSON.stringify(data))
+        console.log("data in pool_read",data);
+        console.log("current pool_read",currentdata);
+        console.log("data.location mean pool in read",data.Location.Seats);
+        setSeats(data.Location.Seats);
+        console.log("seats in pool_read",Seats);
+        setOldRent(data.Location.Rent);
+        console.log("seats in pool_read",Rent);
       //  if(data.message==="success fully find profile"){
       //   setLoading(true);
       //  }else{
@@ -56,44 +69,57 @@ const getdata="http://localhost:5000/pool/Pool_Read";
     }
   }
 useEffect(()=>{
-  console.log("view pool");
+  // console.log("view pool");
  geteachdata();
-},[])
+},[destination&&source])
   return <>
    
-  <div style={{ border: "3px solid red",display:"flex",width:"20%",height:"20%"}}>
-     <h2 style={{color:"black"}}> nw gamer pool</h2>
-     <h2 style={{color:"black"}}> new gamer pool</h2>
-     <h2 style={{color:"black"}}> new gamer pool</h2>
-     <h2 style={{color:"black"}}> new gamer pool</h2>
-   </div>
  
 {
     
     Object.values(currentdata).map((item)=>{
-         const{destination,source}=item;
-         return(<>
+      const{Name,Model,transmission,Seats,Rent,Date,Time,destination,source,destinationname,sourcename}=item;
+      if(Name){
+
+       return(<>
+        <div class="text">  {  currentdata.message}</div>
+         <div >
+
                <div >
+                   
+                           <div className="pool-data" style={{color:"black"}}>
 
-                     <div >
-                         
-                                 <div className="pool-data" style={{color:"black"}}>
+                             
+                               <h30>Drop off Location: {destinationname}  {destination}</h30>
+                               <h30>Pickup Location: {sourcename}   {source}</h30>
+                               <h30>Name: {Name}</h30>
+                               <h30>Model: {Model}</h30>
+                               <h30>Transmission: {transmission}</h30>
+                               <h30>Rent: {Rent}</h30>
+                               <h30>Seats: {Seats}</h30>
+                               <h30>Date: {Date}</h30>
+                               <h30>Time: {Time}</h30>
+                           </div>       
+                   </div>
+                   {/* <button className='Select' onClick={noofselect} > Select</button> */}
+         </div>
 
-                                     <h30>source: {source}</h30>
-                                     <h30>destinaion: {destination}</h30>
-                                 </div>
-                                 
+            {/* <div className="pool-data" style={{color:"black"}}>
+
+                             
+                              
+                               <h30>Pickup Location: {Seats}</h30>
+                               <h30>oldRent: {oldRent}</h30>
+                               <h30>newrent: {Rent}</h30>
                                
-                                 
-                                 
-                         </div>
-                          
-               </div>
-                         <p> find {currentdata.message}</p>
-           
-         </>
-         )
-     })
+                           </div>               */}
+     
+   </>
+   )
+
+      }
+      
+  })
  
 
      

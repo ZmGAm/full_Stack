@@ -29,12 +29,13 @@ const handleLogout = () => {
           
           <div class="real">
            
-              <div class="logo">
-                <li>
-                  <a>Share Your Ride</a>
+          <div class="logo" style={{display:'flex',alignItems:"center",justifyContent:"center",padding:"0 1% 0 1%",margin:"2px"}}>
+                
+                <a >Share Your Ride</a>
 
-                </li>
-                </div>
+              
+
+              </div>
                 <ul class="menu">
                     <li className='items'>
                       <NavLink className='linkitems' to="/">Home</NavLink>
