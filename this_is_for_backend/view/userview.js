@@ -1,5 +1,5 @@
 
-const usermodel=require('../models/usermodel')
+const usermodel=require('../models/usermodel.js')
 // module.exports.getuser = async (req, res) => {
 //     const _data = await usermodel.find({})
 //     if (_data) {
