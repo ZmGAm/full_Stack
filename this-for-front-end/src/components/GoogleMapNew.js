@@ -190,7 +190,7 @@ function GoogleMapNew() {
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             
-              <h style={{color:"red" ,background:"white",fontsize:"20px"}}> {source.label}</h>
+              <h style={{color:"red" ,background:"white",fontsize:"20px"}}> {source.name}</h>
           
           </OverlayViewF>
         </MarkerF>
@@ -202,7 +202,7 @@ function GoogleMapNew() {
             position={{ lat: destination.lat, lng: destination.lng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-              <h style={{color:"red" ,background:"white",fontsize:"20px"}}>{destination.label}</h>
+              <h style={{color:"red" ,background:"white",fontsize:"20px"}}>{destination.name}</h>
           </OverlayViewF>
         </MarkerF>
        ): null}

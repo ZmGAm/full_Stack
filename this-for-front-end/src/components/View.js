@@ -73,6 +73,7 @@ const View = () => {
             const{ID,username,password,phone,email}=item;
             if(ID){
               return(<>
+                <div className='text' >{currentdata.message}</div>
                 <div className='topcontain'>
 
                       <div className='profile'>
@@ -93,7 +94,7 @@ const View = () => {
                           </div>
                            
                 </div>
-                          <p> {currentdata.message}</p>
+                         
             
           </>
           )
