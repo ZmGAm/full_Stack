@@ -32,7 +32,9 @@ mongoose.connect("mongodb+srv://muneerzohaib698zz123:zohaib123@carpooling.nurhdz
 .catch((err) => {
   console.error('DB Connection Error:', err);
 });
-
+app.get('/',(req,res)=>{
+  res.json("gamer you are connected");
+})
 
 app.post('/user/signup', usercontrol.adduser);
 app.post('/user/login', usercontrol.loginuser);
