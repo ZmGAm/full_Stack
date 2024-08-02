@@ -14,7 +14,7 @@ const app = express()
 app.use(cors(
 
   {
-    origin:["https://frontend-iota-woad.vercel.app/"],
+    origin:["https://frontend-iota-woad.vercel.app"],
     methods:["POST","GET"],
     credential:true
   }
