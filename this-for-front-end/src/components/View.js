@@ -6,7 +6,8 @@ import { LoginContext } from './Context/LoginContext';
 // import axios from 'axios';
 
 // const getdata="AIzaSyCsHhl2ACcwjgaeVOpFb6eFfbCB3qEGTLM";
-const getdata="http://localhost:5000/user/View";
+// const getdata="http://localhost:5000/user/View";
+const getdata="https://backend-weld-xi.vercel.app/user/View";
 const View = () => {
     
     const[currentdata,setCurrentData]=useState({})
