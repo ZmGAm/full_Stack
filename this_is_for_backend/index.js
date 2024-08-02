@@ -13,11 +13,11 @@ const app = express()
 
 app.use(cors(
 
-  // {
-  //   origin:[""],
-  //   methods:["POST","GET"],
-  //   credential:true
-  // }
+  {
+    origin:["https://full-stackwithzm-zoahib-muneers-projects.vercel.app"],
+    methods:["POST","GET"],
+    credential:true
+  }
 ))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
