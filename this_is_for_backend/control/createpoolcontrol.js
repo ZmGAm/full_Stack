@@ -12,12 +12,12 @@ module.exports.createpool = async (req, res) => {
         }
         else{
 
-            return res.send({ code: 300, message: 'you cannot create more pool just add new vehical details' })
+            return res.send({ code: 1200, message: 'you cannot create more pool just update details' })
         }
         
         
     } else {
-        const _res = await createpoolmodel.create({ destination,source, Name, Model,seats,transmission,rent,time,ID,date })
+        const _res = await createpoolmodel.create({ destination,source, Name, Model,seats,transmission,rent,updatedRent:rent,time,ID,date })
         if (_res) {
         
             return res.send({ code: 300, message: 'pool is created sucessfully ' })
@@ -25,6 +25,40 @@ module.exports.createpool = async (req, res) => {
             return res.send({ code: 500, message: 'Service error' })
         }
 
+       
+    }
+}
+module.exports.updatepool = async (req, res) => {
+
+    // const { ID } = req.params
+    const { Rent,Seats,ID } = req.body
+    console.log("bcakned recived object",req.body)
+    const update= await createpoolmodel.findOneAndUpdate( {ID:ID} ,{updatedRent:Rent,seats:Seats})
+
+    
+    if (update) {
+        
+            return res.send({ code: 9000, message: ' pool is selected succesfully ' })
+        
+    } else {
+        
+            return res.send({ code: 700, message: 'pool not selected succesfully ' })
+       
+    }
+}
+module.exports.editpool = async (req, res) => {
+
+    // const { ID } = req.params
+    const { destination,source, Name, Model,seats,transmission,rent,time,ID,date } = req.body
+    // console.log("bcakned recived object",req.body)
+    const edit= await createpoolmodel.findOneAndUpdate( {ID:ID} ,{ destination:destination,source:source, Name:Name, Model:Model,seats:seats,transmission:transmission,rent:rent,updatedRent:rent,time:time,ID:ID,date:date })
+    if (edit) {
+        
+            return res.send({ code: 25000, message: ' edit pool succesfully ' })
+        
+    } else {
+        
+            return res.send({ code: 700, message: 'some thing went worng ' })
        
     }
 }

@@ -24,6 +24,7 @@ app.use(bodyParser.json())
 mongoose.connect("mongodb+srv://muneerzohaib698zz123:zohaib123@carpooling.nurhdzs.mongodb.net/?retryWrites=true&w=majority&appName=Carpooling", {
 
   useUnifiedTopology: true, // Keep this option
+  serverSelectionTimeoutMS: 30000 ,
 })
 .then(() => {
   console.log('DB Connected.');
@@ -35,9 +36,12 @@ mongoose.connect("mongodb+srv://muneerzohaib698zz123:zohaib123@carpooling.nurhdz
 
 
 app.post('/user/signup', usercontrol.adduser);
+app.put('/user/Editprofile', usercontrol.updateuser);
 app.post('/user/login', usercontrol.loginuser);
 app.post('/user/View', userview.getuser);
 app.post('/pool/Pool_c', createpoolcontrol.createpool);
+app.put('/pool/Pool_c', createpoolcontrol.editpool);
+app.put('/pool/Pool_Read', createpoolcontrol.updatepool);
 app.post('/pool/Pool_Read', poolview.viewpool);
 
 app.listen(port, () => { 

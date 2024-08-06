@@ -24,6 +24,22 @@ module.exports.adduser = async (req, res) => {
     }
 }
 
+    module.exports.updateuser = async (req, res) => {
+
+        // const { ID } = req.params
+        const { username,email, password, phone,type,dateofbirth,ID,date } = req.body
+        // console.log("bcakned recived object",req.body)
+        const edituser= await usermodel.findOneAndUpdate( {ID:ID} ,{ username:username, email:email, password:password, phone:phone,type:type,dateofbirth:dateofbirth,date:date})
+        if (edituser) {
+            
+                return res.send({ code: 25000, message: ' profile edit  succesfully ' })
+            
+        } else {
+            
+                return res.send({ code: 700, message: 'some thing went worng ' })
+           
+        }
+    }
 module.exports.loginuser = async (req, res) => {
 
     const { email, password } = req.body

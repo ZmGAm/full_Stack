@@ -7,9 +7,9 @@ import Login from './components/Login';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signup from './components/Signup';
 import View from './components/View';
-import Localdevelop from'./components/Localdevelop';
-// import Pool_c from './Pool_c';
 import Pool_c from './components/Pool_c';
+import PoolView from './components/PoolView';
+import Editprofile from './components/Editprofile';
 // gamer
 function App() {
   return (
@@ -28,7 +28,9 @@ function App() {
         <Route path="/View" element={<View />} />
         <Route path="/Signup" element={<Signup />} />
         <Route path="/Pool_c" element={<Pool_c />} />
-        <Route path="/Localdevelop" element={<Localdevelop />} />
+        
+        <Route path="/PoolView" element={<PoolView />} />
+        <Route path="/Editprofile" element={<Editprofile />} />
         
       </Routes>
     </BrowserRouter>

@@ -1,4 +1,4 @@
-// "use client";
+
 import React, { useState, useEffect, useContext } from "react";
 import {
   GoogleMap,
@@ -7,17 +7,15 @@ import {
   OverlayView,
   DirectionsRenderer,
 } from "@react-google-maps/api";
-import { DestinationContext } from "./Context/DestinationContext";
-import { SourceContext } from "./Context/SourceContext";
 
-
+import { PoolContext } from "./Context/PoolContext";
 const containerStyle = {
   width: "100%",
   height: window.innerWidth * 0.45,
 };
-function GoogleMapNew() {
-  const { destination } = useContext(DestinationContext);
-  const { source } = useContext(SourceContext);
+function Poolmap() {
+  
+  const { pool } = useContext(PoolContext);
 
   const [center, setCenter] = useState({
     lat: -3.745,
@@ -42,24 +40,24 @@ function GoogleMapNew() {
   
   useEffect(() => {
     // setPlaceholder(type === 'Source' ? 'Pickup Location ' : 'Dropoff Location ');
-    if (source != null && map) {
+    if (pool.Location.source != null && map) {
       setCenter({
-        lat: source.lat,
-        lng: source.lng,
+        lat: pool.Location.slat,
+        lng: pool.Location.slng,
       });
     }
   
-  }, [source]);
+  }, [pool.Location.source]);
 
   useEffect(() => {
     // setPlaceholder(type === 'Source' ? 'Pickup Location ' : 'Dropoff Location ');
-    if (destination !=null && map) {
+    if (pool.Location.destination !=null && map) {
       setCenter({
-        lat: destination.lat,
-        lng: destination.lng,
+        lat: pool.Location.dlat,
+        lng: pool.Location.dlng,
       });
     }
-  }, [destination]);
+  }, [pool.Location.destination]);
  
 
   // const directionRoute=()=>{
@@ -110,11 +108,11 @@ function GoogleMapNew() {
   const directionRoute = () => {
     const DirectionsService = new window.google.maps.DirectionsService();
     // const DirectionsRenderer=new window.google.maps.DirectionsRenderer();
-    if (source && destination) { 
+    if (pool.Location.source && pool.Location.destination) { 
     DirectionsService.route(
       {
-        origin: new window.google.maps.LatLng(source.lat, source.lng), // Create LatLng object for origin
-        destination: new window.google.maps.LatLng(destination.lat, destination.lng), // Create LatLng object for destination
+        origin: new window.google.maps.LatLng(pool.Location.slat, pool.Location.slng), // Create LatLng object for origin
+        destination: new window.google.maps.LatLng(pool.Location.dlat,pool.Location.dlng), // Create LatLng object for destination
         travelMode: window.google.maps.TravelMode.DRIVING,
         provideRouteAlternatives:true,
       },
@@ -133,10 +131,10 @@ function GoogleMapNew() {
   }
   
   useEffect(() => {
-    if (source || destination) {
+    if (pool.Location.source || pool.Location.destination) {
       directionRoute();
     }
-  }, [source, destination]);
+  }, [pool.Location.source , pool.Location.destination]);
   useEffect(() => {
     console.log("Direction point Result:", directionpoint);
   }, [directionpoint]);  
@@ -165,27 +163,27 @@ function GoogleMapNew() {
       onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {source != null ? (
+      {pool.Location.source != null ? (
         
-        <MarkerF position={{ lat: source.lat, lng: source.lng }} >
+        <MarkerF position={{ lat: pool.Location.slat, lng: pool.Location.slng }} >
           <OverlayViewF
-            position={{ lat: source.lat, lng: source.lng }}
+            position={{ lat: pool.Location.slat, lng:  pool.Location.slng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             
-              <h style={{color:"red" ,background:"white",fontsize:"20px"}}> {source.name}</h>
+              <h style={{color:"red" ,background:"white",fontsize:"20px"}}> {pool.sourcename}</h>
           
           </OverlayViewF>
         </MarkerF>
        ): null}
-       {destination != null ? (
+       { pool.Location.destination != null ? (
         
-        <MarkerF position={{ lat: destination.lat, lng: destination.lng }} >
+        <MarkerF position={{ lat:  pool.Location.dlat, lng:  pool.Location.dlng }} >
           <OverlayViewF
-            position={{ lat: destination.lat, lng: destination.lng }}
+            position={{ lat: pool.Location.dlat, lng: pool.Location.dlng }}
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
-              <h style={{color:"red" ,background:"white",fontsize:"20px"}}>{destination.name}</h>
+              <h style={{color:"red" ,background:"white",fontsize:"20px"}}>{pool.destinationname}</h>
           </OverlayViewF>
         </MarkerF>
        ): null}
@@ -195,4 +193,4 @@ function GoogleMapNew() {
   );
 }
 
-export default GoogleMapNew;
+export default Poolmap

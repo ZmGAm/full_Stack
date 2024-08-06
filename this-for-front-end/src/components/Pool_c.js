@@ -24,6 +24,7 @@ const Pool_c = () => {
   
   const [error,setError]=useState({});
   const [isSubmit, setIsSubmit] = useState(false);
+  const [Edit, setEdit] = useState(false);
   const{pool,updatePool}= useContext(PoolContext);
   const{login,updateLogin}= useContext(LoginContext);
   const{search}= useContext(SearchContext);
@@ -70,14 +71,14 @@ const Pool_c = () => {
 
        
     
-    useEffect(() => {
-      console.log("search source value in develop" ,searchsource);
-      // console.log("search destination value in develop" ,searchdestination);
-    }, [searchsource]);
-    useEffect(() => {
-      console.log("search destination in develop" ,searchdestination);
-      // console.log("search destination value in develop" ,searchdestination);
-    }, [searchdestination]);
+    // useEffect(() => {
+    //   console.log("search source value in develop" ,searchsource);
+    //   // console.log("search destination value in develop" ,searchdestination);
+    // }, [searchsource]);
+    // useEffect(() => {
+    //   console.log("search destination in develop" ,searchdestination);
+    //   // console.log("search destination value in develop" ,searchdestination);
+    // }, [searchdestination]);
     const GetCoordinate = (place,type) => {
       console.log("place",place);
       if(!place||!place.value||!place.value.place_id){ 
@@ -125,6 +126,14 @@ const Pool_c = () => {
         setIsSubmit(true);
         
       };
+      const edit = async (e) => {
+        e.preventDefault();
+        
+        // Validate user input (assuming you have a validate function)
+        setError(validate(userRegistration));
+        setEdit(true);
+        
+      };
       const insertdata= async (e)=>{
         
 
@@ -157,12 +166,49 @@ const Pool_c = () => {
           // Handle error (e.g., show an error message)
         }
       }
+      const updatedata= async (e)=>{
+        
+
+        const newRecord = { ...userRegistration, date: new Date().toLocaleString(),ID:login.ID };
+
+
+        try {
+          // Make an API request to post form data
+          // const response = await Axios.post(posts_data, newRecord);
+          const response = await fetch(posts_data,{
+            method:'PUT',
+            body:JSON.stringify(newRecord),
+            headers:{
+              'Content-Type':'application/json'
+            }
+          });
+          const data= await response.json();
+          setExit(data);
+          console.log("response ",data);
+      
+          if (response.status === 200) {
+            console.log('Data submitted successfully:', response);
+            // Handle success (e.g., show a success message)
+          } else {
+            console.error('API request failed:', response.status);
+            // Handle error (e.g., show an error message)
+          }
+        } catch (error) {
+          console.error('Error during API request:', error);
+          // Handle error (e.g., show an error message)
+        }
+      }
       useEffect(()=>{
 
-        console.log("error",error);
+        // console.log("error",error);
         if(Object.keys(error).length===0 && isSubmit){
           console.log("user",userRegistration);
           insertdata();
+        }
+         // console.log("error",error);
+         if(Object.keys(error).length===0 && Edit){
+          console.log("user",userRegistration);
+          updatedata();
         }
       },[error]);
       
@@ -291,7 +337,7 @@ const Pool_c = () => {
                         <select name="transmission" value={userRegistration.transmission} onChange={inputvalid} style={{padding:"3px 35px 3px 35px"}}>
                           <option>Please Select</option>
                           <option>auto</option>
-                          <option>Maunal</option>
+                          <option>Manual</option>
                          
                         </select>
                         <p1 className="formerrors">{error.transmission}</p1>
@@ -312,8 +358,9 @@ const Pool_c = () => {
                 </div>
                
 
-              <p>{exit.message}</p>
-                <button class="btn btn-primary" >submmit</button>
+              <p style={{textAlign:"center",color:"red"}}>{exit.message}</p>
+               
+                {exit.code==1200? <button onClick={edit} class="btn btn-primary" >Edit</button>: <button class="btn btn-primary" >submmit</button>}
             </form>
            
             <div

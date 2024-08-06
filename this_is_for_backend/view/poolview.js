@@ -9,15 +9,23 @@ module.exports.getpool = async (req, res) => {
     }
 }
 module.exports.viewpool = async (req, res) => {
- console.log("bcakned recived object",req.body)
+//  console.log("bcakned recived object",req.body)
  const  {source,destination}  = req.body
  const location = await createpoolmodel.findOne({source:source})
-    if (location) {
-        // return res.send({ code: 400, message: ' match success fully ', location:{source:location.source,destination:location.destination}})
-        // /if (location.destination.adress === destination.adress&&location.source.adress===source.adress){
-         const destinationmatch= await createpoolmodel.findOne({destination:destination})
+ if (location) {
+     // return res.send({ code: 400, message: ' match success fully ', location:{source:location.source,destination:location.destination}})
+     // /if (location.destination.adress === destination.adress&&location.source.adress===source.adress){
+        const destinationmatch= await createpoolmodel.findOne({destination:location.destination})
         if (destinationmatch) {
-            return res.send({ code: 3000, message: ' available pools ', Location:{Name:location.Name,Model:location.Model,Seats:location.seats,transmission:location.transmission,Rent:location.rent,Time:location.time,Date:location.date,destination:location.destination.adress,source:location.source.adress,destinationname:location.destination.name,sourcename:location.source.name}})
+            //console.log("location.destination in bcakend ",location.destination)
+            return res.send({ code: 3000, message: ' available pools ', Location:{ID:location.ID,
+                Name:location.Name,Model:location.Model,Seats:location.seats,transmission:location.
+                transmission,Rent:location.rent,updatedRent:location.updatedRent,Time:location.time,
+                Date:location.date,destination:location.destination.adress,source:location.source.adress,
+                destinationname:location.destination.name,sourcename:location.source.name
+                 ,slat:location.source.lat,slng:location.source.lng
+                 ,dlat:location.destination.lat,dlng:location.destination.lng
+            }})
         } 
         else{
 

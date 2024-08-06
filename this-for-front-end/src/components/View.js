@@ -3,12 +3,14 @@ import React,{useState,useEffect, useContext} from 'react';
 import picprofile from './design/images/driver.jpg';
 import "./design/pool.css";
 import { LoginContext } from './Context/LoginContext';
+import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 // const getdata="AIzaSyCsHhl2ACcwjgaeVOpFb6eFfbCB3qEGTLM";
 const getdata="http://localhost:5000/user/View";
 const View = () => {
-    
+  
+    const direct=useNavigate()
     const[currentdata,setCurrentData]=useState({})
     // const[loading,setLoading]=useState(false)
     const{login,updateLogin}=useContext(LoginContext)
@@ -59,7 +61,13 @@ const View = () => {
     //     setData(result.data.data);
     //     console.log("data",data);
     // }
-
+    const edituser = async (e) => {
+      e.preventDefault();
+      
+      // Validate user input (assuming you have a validate function)
+      direct("/Editprofile")
+      
+    };
         useEffect(()=>{
             console.log("login in view " ,localStorage.getItem('login'));
             geteachdata();
@@ -70,7 +78,7 @@ const View = () => {
 {
     
        Object.values(currentdata).map((item)=>{
-            const{ID,username,password,phone,email}=item;
+            const{ID,username,password,phone,email,type }=item;
             if(ID){
               return(<>
                 <div className='text' >{currentdata.message}</div>
@@ -83,12 +91,13 @@ const View = () => {
                                       <h30>ID: {ID}</h30>
                                       <h30>User Name: {username}</h30>
                                       <h30>Email: {email}</h30>
-                                      <h30>Pass word: {password}</h30>
+                                      <h30>Password: {password}</h30>
+                                      <h30>Type: {type}</h30>
                                       <h30>Contact: {phone}</h30>
                               
                                   </div>
                                   
-                                  <button className='Edit' > Edit</button>
+                                  <button className='Edit' onClick={edituser}> Edit</button>
                                   
                                   
                           </div>
