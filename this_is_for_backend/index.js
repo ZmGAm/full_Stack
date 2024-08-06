@@ -13,11 +13,11 @@ const app = express()
 
 app.use(cors(
 
-  // {
-  //   origin:[""],
-  //   methods:["POST","GET"],
-  //   credential:true
-  // }
+  {
+    origin:["https://frontend-iota-woad.vercel.app"],
+    methods:["POST","GET"],
+    credential:true
+  }
 ))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -33,7 +33,9 @@ mongoose.connect("mongodb+srv://muneerzohaib698zz123:zohaib123@carpooling.nurhdz
 .catch((err) => {
   console.error('DB Connection Error:', err);
 });
-
+app.get('/',(req,res)=>{
+  res.json("gamer you are connected");
+})
 
 app.post('/user/signup', usercontrol.adduser);
 app.put('/user/Editprofile', usercontrol.updateuser);
