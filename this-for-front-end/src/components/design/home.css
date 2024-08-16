@@ -163,7 +163,7 @@
     box-shadow: 0 4px 2px 0 blue;
 }
 
-ul {
+/* ul {
 
     display: flex;
     justify-content: flex-end;
@@ -172,7 +172,7 @@ ul {
     margin-top: 10px;
 
 
-}
+} */
 
 ul li {
     list-style-type: none;

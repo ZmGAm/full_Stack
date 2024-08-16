@@ -7,8 +7,9 @@ import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 // const getdata="AIzaSyCsHhl2ACcwjgaeVOpFb6eFfbCB3qEGTLM";
-// const getdata="http://localhost:5000/user/View";
-const getdata="https://backend-weld-xi.vercel.app/user/View";
+const getdata="http://localhost:5000/user/View";
+
+// const getdata="https://backend-weld-xi.vercel.app/user/View";
 const View = () => {
   
     const direct=useNavigate()
@@ -82,7 +83,7 @@ const View = () => {
             const{ID,username,password,phone,email,type }=item;
             if(ID){
               return(<>
-                <div className='text' >{currentdata.message}</div>
+                <div className='text' > Hi  {currentdata.message}</div>
                 <div className='topcontain'>
 
                       <div className='profile'>

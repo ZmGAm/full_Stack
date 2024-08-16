@@ -13,18 +13,18 @@ const app = express()
 
 app.use(cors(
 
-  {
-    origin:["https://frontend-iota-woad.vercel.app"],
-    methods:["POST","GET"],
-    credential:true
-  }
+  // {
+  //   origin:["https://frontend-iota-woad.vercel.app"],
+  //   methods:["POST","GET"],
+  //   credential:true
+  // }
 ))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 mongoose.connect("mongodb+srv://muneerzohaib698zz123:zohaib123@carpooling.nurhdzs.mongodb.net/?retryWrites=true&w=majority&appName=Carpooling", {
 
   useUnifiedTopology: true, // Keep this option
-  serverSelectionTimeoutMS: 30000 ,
+  serverSelectionTimeoutMS: 50000 ,
 })
 .then(() => {
   console.log('DB Connected.');

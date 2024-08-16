@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 // import './design/signup.css';
 // import  Locationsearch  from "./Locationsearch";
 import"./design/forms.css"
+import Poolmap from './Poolmap';
 // import Axios  from 'axios';
 // import { imageDb } from './config';
 
@@ -376,7 +377,8 @@ const Pool_c = () => {
             
             <div className='google'> 
                                                           
-                   <GoogleMapNew/>                                       
+                   <Poolmap/>  
+                                                      
 
                </div> 
 

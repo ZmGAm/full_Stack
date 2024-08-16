@@ -41,12 +41,12 @@ module.exports.adduser = async (req, res) => {
         }
     }
 module.exports.loginuser = async (req, res) => {
-
+      console.log(req.body);
     const { email, password } = req.body
     const userExists = await usermodel.findOne({ email: email })
     if (userExists) {
         if (userExists.password !== password) {
-            return res.send({ code: 200, message: 'Email or Password wrong.' })
+            return res.send({ code: 200, message: 'Password is incorrect' })
         }
         const _token = await jwt.sign({ ...userExists }, 'PRIV_123')
 
@@ -59,6 +59,6 @@ module.exports.loginuser = async (req, res) => {
             username: userExists.username
         })
     } else {
-        return res.send({ code: 500, message: 'user profile not exit ' })
+        return res.send({ code: 500, message: 'Email is incorrect' })
     }
 }

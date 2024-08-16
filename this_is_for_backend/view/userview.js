@@ -17,7 +17,7 @@ module.exports.getuser = async (req, res) => {
             if (userExists.username === username) {
                 const _data = await usermodel.find({})
                 if (_data) {
-                    return res.send({ code: 200, message: 'success fully find profile', data: {ID:userExists.ID,type:userExists.type,username:userExists.username,email:userExists.email,password:userExists.password,phone:userExists.phone} })
+                    return res.send({ code: 200, message: userExists.username, data: {ID:userExists.ID,type:userExists.type,username:userExists.username,email:userExists.email,password:userExists.password,phone:userExists.phone} })
                 } else {
                     return res.send({ code: 500, message: 'Service error' })
                 }  

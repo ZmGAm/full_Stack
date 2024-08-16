@@ -44,21 +44,24 @@ const initializspool=()=>{
     // const updatesearch = (newValue) => {
     //   setSearch(newValue);
     // };
-    const updatePool = (newValue, type) => {
-      setPool(prevPool => {
-        if (type === "Pdestination") {
-          return {
-            ...prevPool,
-            destination: newValue
-          };
-        } else if (type === "Psource") {
-          return {
-            ...prevPool,
-            source: newValue
-          };
-        }
-        return prevPool;
-      });
+    // const updatePool = (newValue, type) => {
+    //   setPool(prevPool => {
+    //     if (type === "Pdestination") {
+    //       return {
+    //         ...prevPool,
+    //         destination: newValue
+    //       };
+    //     } else if (type === "Psource") {
+    //       return {
+    //         ...prevPool,
+    //         source: newValue
+    //       };
+    //     }
+    //     return prevPool;
+    //   });
+    // };
+    const updatePool = (newValue) => {
+      setPool(newValue);
     };
     const updatesearch = (newValue, type) => {
       setSearch(prevPool => {

@@ -14,17 +14,17 @@ const Pool_Read = () => {
     return value?JSON.parse(value):1;
 
 };
-  const[currentdata,setCurrentData]=useState({});
-  const[select,setSelect]=useState({});
-  const[Rent,setRent]=useState(0);
-  const[ID,setID]=useState(0);
-  const[oldRent,setOldRent]=useState({});
-  const[selected,setSlected]=useState(initializselect);
+const[select,setSelect]=useState({});
+const[Rent,setRent]=useState(0);
+const[oldRent,setOldRent]=useState({});
+const[selected,setSlected]=useState(initializselect);
+const[currentdata,setCurrentData]=useState({});
   const[Seats,setSeats]=useState(0);
+  const[ID,setID]=useState(0);
  const{destination}=useContext(DestinationContext);
  const{source}=useContext(SourceContext);
  const{login}=useContext(LoginContext);
- const{updatePool}=useContext(PoolContext);
+ const{pool,updatePool}=useContext(PoolContext);
 useEffect(()=>{
   console.log("view pool destination",destination);
  
@@ -34,6 +34,10 @@ useEffect(()=>{
   console.log("view pool source",source);
  
 },[source])
+useEffect(()=>{
+  console.log("pool in pool read ",pool);
+ 
+},[pool])
 const updatedata= async (e)=> {
            
   // const user=localStorage.getItem('login');
@@ -54,9 +58,9 @@ const updatedata= async (e)=> {
       setSelect(select);
       
       // localStorage.setItem("poolread",JSON.stringify(data))
-      console.log("select in pool_read",select);
+      // console.log("select in pool_read",select);
      
-      console.log("message",select.message);
+      // console.log("message",select.message);
     
       
     //  if(data.message==="success fully find profile"){
@@ -80,15 +84,15 @@ const updatedata= async (e)=> {
   }
 }
 useEffect(()=>{
-  if(Seats>=0&&Rent>0&&selected!==1){
+  if(Seats>=0&&Rent>0&&selected!==0){
     updatedata();
     localStorage.setItem("selected",selected);
     geteachdata();
   }
-  // console.log("seats after selection",Seats);
-  // console.log("oldrent after selection",oldRent);
-  // console.log("selected after selection",selected);
-  // console.log("rent after selection",Rent);
+  console.log("seats after selection",Seats);
+  console.log("oldrent after selection",oldRent);
+  console.log("selected after selection",selected);
+  console.log("rent after selection",Rent);
 },[Rent,Seats,oldRent,selected])
 const hnoofselect= ()=>{
 
@@ -144,7 +148,7 @@ useEffect(()=>{
         setCurrentData(data);
         updatePool(data)
         
-        // console.log("data in pool_read",data);
+        console.log("update pool inread pool",pool);
         // console.log("current pool_read",currentdata);
         // console.log(" data.data pool_read",data.data);
         localStorage.setItem("pool",JSON.stringify(data))
